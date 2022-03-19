@@ -41,6 +41,8 @@
 - MySQL篇
 
   - [MySQL](configuration.md)
+  - [MySQL](configuration.md)
+  - [MySQL](configuration.md)
 
 - 分布式
 
