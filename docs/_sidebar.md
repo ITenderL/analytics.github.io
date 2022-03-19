@@ -27,6 +27,7 @@
 - 设计模式
 
   - [设计模式](/Java/design-pattern/23种设计模式.md)
+  - [设计模式Demo地址](https://github.com/ITenderL/design_pattern)
   
 - 常用框架
   
@@ -35,6 +36,7 @@
   - [SpringMvc常见问题](/system-design/framework/spring/spring-mvc-basis.md)
   - [SpringBoot常见问题](/system-design/framework/spring/spring-boot-basis.md)
   - [SpringCloud常见问题](/system-design/framework/springcloud/spring-cloud-basis.md)
+  - [mybatis常见问题](/system-design/framework/mybatis/mybatis-basis.md)
   
 - MySQL篇
 
@@ -55,14 +57,14 @@
   
 - 消息队列
   
-  [RabbitMQ]()
-  [Kafka]()
-  [RocketMQ]()
+  - [RabbitMQ常见问题](/distributed-middleware/mq/RabbitMQ.md)
+  - [Kafka常见问题](/distributed-middleware/mq/kafka.md)
+  - [RocketMQ常见问题](/distributed-middleware/mq/rocketmq.md)
   
 - 大数据
 
-  - [Storm]()
-  - [Flink]()
+  - [Storm](/bigdata/storm/)
+  - [Flink](/bigdata/flink/)
   
   
 - 计算机基础
@@ -75,7 +77,6 @@
 
 - 系统设计
 
-  - [常用框架](常用框架.md)
   - [安全](安全.md)
   - 认证授权
   - [定时任务](定时任务.md)
