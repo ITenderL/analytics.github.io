@@ -40,9 +40,12 @@
   
 - MySQL篇
 
-  - [MySQL](configuration.md)
-  - [MySQL](configuration.md)
-  - [MySQL](configuration.md)
+  - [MySQL基础知识整理](/database/mysql/mysql-basis.md)
+  - [MySQL索引详解](/database/mysql/MySQL索引详解.md)
+  - [MySQL索引优化](/database/mysql/mysql-optimize-index.md)
+  - [MySQL主从复制详解](/database/mysql/mysql-master-slave.md)
+  - [MySQL事务详解](/database/mysql/mysql-transaction.md)
+  - [MySQL锁详解](/database/mysql/mysql-lock.md)
 
 - 分布式
 
@@ -53,9 +56,11 @@
   - [分布式事务](分布式事务.md)
   - [分布式协调](分布式协调.md)
   
-- 搜索引擎
+- Elasticsearch搜索引擎
 
-  - [ElasticSearch](/distributed-middleware/elasticsearch/elasticsearch环境搭建.md)
+  - [ElasticSearch环境搭建](/distributed-middleware/elasticsearch/Elasticsearch基础概念.md)
+  - [ElasticSearch环境搭建](/distributed-middleware/elasticsearch/elasticsearch环境搭建.md)
+  - [ElasticSearch环境搭建](/distributed-middleware/elasticsearch/Elasticsearch知识必备.md)
   
 - 消息队列
   
