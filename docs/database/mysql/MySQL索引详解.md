@@ -1,4 +1,5 @@
-# **MySQL**索引详解
+# `MySQL`索引详解
+
 ## 1. 索引是什么
 
 官方介绍索引是帮助MySQL高效获取数据的数据结构。简单来讲，索引类似于一本书的目录，可以帮助我们快速高效的查询数据。
@@ -331,7 +332,7 @@ CREATE TABLE `abc_innodb`
 select * from abc_innodb order by a, b, c, id;
 ```
 
-![图片](E:\workSpace\IdeaProjects\ITenderL.github.io\docs\database\mysql\images\index-introduce\abc_innodb)
+![图片](E:\workSpace\IdeaProjects\ITenderL.github.io\docs\database\mysql\images\index-introduce\abc_innodb.png)
 
 组合索引的数据结构：
 
@@ -365,7 +366,7 @@ select * from abc_innodb order by a, b, c, id;
 
 **未使用到覆盖索引：**
 
-![图片](E:\workSpace\IdeaProjects\ITenderL.github.io\docs\database\mysql\images\index-introduce\覆盖索引-未使用)
+![图片](E:\workSpace\IdeaProjects\ITenderL.github.io\docs\database\mysql\images\index-introduce\覆盖索引-未使用.png)
 
 ## 6. 索引下推
 
