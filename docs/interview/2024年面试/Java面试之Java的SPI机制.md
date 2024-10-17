@@ -159,8 +159,6 @@ com.itender.mybatis.service.impl.SpecialProcess
    
    ```
 
-   
-
 # SPI的原理
 
 上面我们简单讲了一下SPI的使用和实现。接下来就研究一下SPI的实现原理。
