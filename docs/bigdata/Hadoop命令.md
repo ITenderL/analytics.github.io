@@ -70,6 +70,18 @@ bin/hive --service hiveserver2 >> logs/hiveserver2.log 2>&1 &
 nohup hive --service hiveserver2 &
 nohup hive --service metastore &
 
+-- 在Hive的MySQL元数据库中执行，hive乱码
+use hive;
+-- 1.修改字段注释字符集
+alter table COLUMNS_V2 modify column COMMENT varchar(256) character set utf8;
+-- 2.修改表注释字符集
+alter table TABLE_PARAMS modify column PARAM_VALUE varchar(4000) character set utf8;
+-- 3.修改分区表参数，以支持分区键能够用中文表示
+alter table PARTITION_PARAMS modify column PARAM_VALUE varchar(4000) character set utf8;
+alter table PARTITION_KEYS modify column PKEY_COMMENT varchar(4000) character set utf8;
+-- 4.修改索引注解
+alter table INDEX_PARAMS modify column PARAM_VALUE varchar(4000) character set utf8;
+
 ```
 
 # Spark
