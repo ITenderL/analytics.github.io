@@ -51,11 +51,11 @@ Hash索引的底层就是Hash表。Hash表是键值对的集合，我们使用Ha
 
 ### 二叉查找树
 
-![二叉树结构](E:\workSpace\IdeaProjects\ITenderL.github.io\docs\database\mysql\images\index-introduce\二叉树数据结构.png)
+![二叉树结构](./images/index-introduce/二叉树数据结构.png)
 
 二叉树的特点就是每个节点最多有两个分叉，左子树和右子树数据顺序**左小右大**。这个特性就是为了每次每次都可以进行折半查找减少IO的次数，但是二叉树的结构取决于根节点，在极端的情况下会转换成一种线性结构。
 
-![不分叉的二叉树](E:\workSpace\IdeaProjects\ITenderL.github.io\docs\database\mysql\images\index-introduce\不分叉的二叉树.png)
+![不分叉的二叉树](./images/index-introduce/不分叉的二叉树.png)
 
 **显然这种情况不稳定的我们再选择设计上必然会避免这种情况的**
 
@@ -65,7 +65,7 @@ Hash索引的底层就是Hash表。Hash表是键值对的集合，我们使用Ha
 
 使用平衡二叉查找树的性能近似于二分查找法，时间复杂度为O(log2n)。查询id为8的只需要进行2次IO。
 
-![](E:\workSpace\IdeaProjects\ITenderL.github.io\docs\database\mysql\images\index-introduce\二叉树数据结构.png)
+![](./images/index-introduce/二叉树数据结构.png)
 
 虽然平衡二叉查找树相对于二叉查找树有明显的优势，但是依然存在一些将问题：
 
@@ -87,7 +87,7 @@ MySQL的InnoDB存储引擎中，一次IO会读取一页的数据量（默认一�
 3. 父节点中的元素不会出现在子节点中。
 4. 所有的叶子节点都位于同一层，叶子节点具有相同的深度叶子节点之间互相独立。
 
-![B-Tree](E:\workSpace\IdeaProjects\ITenderL.github.io\docs\database\mysql\images\index-introduce\B-Tree结构.png)
+![B-Tree](./images/index-introduce/B-Tree结构.png)
 
 举个例子，在b树中查询数据的情况：
 
@@ -101,7 +101,7 @@ MySQL的InnoDB存储引擎中，一次IO会读取一页的数据量（默认一�
 
 相比二叉平衡查找树，在整个查找过程中，虽然数据的比较次数并没有明显减少，但是磁盘IO次数会大大减少。同时，由于我们的比较是在内存中进行的，比较的耗时可以忽略不计。B树的高度一般2至3层就能满足大部分的应用场景，所以使用B树构建索引可以很好的提升查询的效率。
 
-![](E:\workSpace\IdeaProjects\ITenderL.github.io\docs\database\mysql\images\index-introduce\B-Tree查询过程.png)
+![](./images/index-introduce/B-Tree查询过程.png)
 
 看到这里一定觉得B树就很理想了，但是前辈们会告诉你依然存在可以优化的地方：
 
@@ -115,7 +115,7 @@ B+树，作为B树的升级版，在B树基础上，MySQL在B树的基础上继�
 - B树：非叶子节点和叶子节点都会存储数据。
 - B+树：只有叶子节点才会存储数据，非叶子节点至存储键值。叶子节点之间使用双向指针连接，最底层的叶子节点形成了一个双向有序链表。
 
-![B+Tree结构](E:\workSpace\IdeaProjects\ITenderL.github.io\docs\database\mysql\images\index-introduce\B+Tree结构.png)
+![B+Tree结构](./images/index-introduce/B+Tree结构.png)
 
 B+树的最底层叶子节点包含了所有的索引项。从图上可以看到，B+树在查找数据的时候，由于数据都存放在最底层的叶子节点上，所以每次查找都需要检索到叶子节点才能查询到数据。
 
@@ -135,7 +135,7 @@ B+树的最底层叶子节点包含了所有的索引项。从图上可以看到
 
 过程如图：
 
-![B+Tree等值查询](E:\workSpace\IdeaProjects\ITenderL.github.io\docs\database\mysql\images\index-introduce\B+Tree查询过程.png)
+![B+Tree等值查询](./images/index-introduce/B+Tree查询过程.png)
 
 **范围查询：**
 
@@ -149,7 +149,7 @@ B+树的最底层叶子节点包含了所有的索引项。从图上可以看到
 
 主键具备唯一性（后面不会有<=26的数据），不需再向后查找，查询终止。将结果集返回给用户。
 
-![B+Tree范围查询](E:\workSpace\IdeaProjects\ITenderL.github.io\docs\database\mysql\images\index-introduce\B+Tree范围查询.png)
+![B+Tree范围查询](./images/index-introduce/B+Tree范围查询.png)
 
 **可以看到B+树可以保证等值和范围查询的快速查找，MySQL的索引就采用了B+树的数据结构。**
 
@@ -179,7 +179,7 @@ CREATE TABLE `user_myisam`(
 INSERT INTO `user_myisam`(`id`, `username`, `age`) VALUES (8, 'zhangyi', 27), (12, 'zhanger', 23), (18, 'zhangsan', 58), (28, 'zhangsi', 33), (22, 'zhangwu', 47), (36, 'zhangliu', 31), (47, 'zhangqi', 25);
 ```
 
-![image-20220405211302549](E:\workSpace\IdeaProjects\ITenderL.github.io\docs\database\mysql\images\index-introduce\t_user.png)
+![image-20220405211302549](./images/index-introduce/t_user.png)
 
 MyISAM存储引擎中，数据文件和索引文件的分开的。MyISAM使用B+Tree构建索引树时，叶子节点中存储的键值为索引列的值，数据为索引所在行的磁盘地址。
 
@@ -187,7 +187,7 @@ MyISAM存储引擎中，数据文件和索引文件的分开的。MyISAM使用B+
 
 #### 主键索引
 
-![](E:\workSpace\IdeaProjects\ITenderL.github.io\docs\database\mysql\images\index-introduce\MyISM-主键索引.png)
+![](./images/index-introduce/MyISM-主键索引.png)
 
 简单分析下查询时的磁盘IO情况：
 
@@ -205,7 +205,7 @@ select * from user where id = 28;
 
 **磁盘IO次数：3次索引检索+记录数据检索。**
 
-![](E:\workSpace\IdeaProjects\ITenderL.github.io\docs\database\mysql\images\index-introduce\MyISAM-主键索引-等值查询.png)
+![](./images/index-introduce/MyISAM-主键索引-等值查询.png)
 
 **根据主键范围查询数据：**
 
@@ -229,7 +229,7 @@ select * from user where id between 28 and 47;
 
 **磁盘IO次数：4次索引检索+记录数据检索。**
 
-![](E:\workSpace\IdeaProjects\ITenderL.github.io\docs\database\mysql\images\index-introduce\MyISAM-主键索引-范围查找.png)
+![](./images/index-introduce/MyISAM-主键索引-范围查找.png)
 
 **备注**：以上分析仅供参考，MyISAM在查询时，会将索引节点缓存在MySQL缓存中，而数据缓存依赖于操作系统自身的缓存，所以并不是每次都是走的磁盘，这里只是为了分析索引的使用过程。
 
@@ -265,13 +265,13 @@ CREATE TABLE `user_innodb`(
 INSERT INTO `user_innodb`(`id`, `username`, `age`) VALUES (8, '张一', 27), (12, '张二', 23), (18, '张三', 58), (28, '张四', 33), (22, '张五', 47), (36, '张六', 31), (47, '张七', 25);
 ```
 
-![image-20220405211344385](E:\workSpace\IdeaProjects\ITenderL.github.io\docs\database\mysql\images\index-introduce\t_user_innodb.png)
+![image-20220405211344385](./images/index-introduce/t_user_innodb.png)
 
 InnoDB的数据和索引存储在同一个文件中，t_user_innodb.ibd中。InnoDB的数据组织方式是聚簇索引。
 
 主键索引的叶子会存储数据行，辅助索引只存储主键的值，所以在使用辅助索引的时候可能需要回表操作。
 
-![](E:\workSpace\IdeaProjects\ITenderL.github.io\docs\database\mysql\images\index-introduce\InnoDB-主键索引.png)
+![](./images/index-introduce/InnoDB-主键索引.png)
 
 **等值查询数据：**
 
@@ -287,7 +287,7 @@ select * from user_innodb where id = 28;
 
 **磁盘IO数量：3次。**
 
-![](E:\workSpace\IdeaProjects\ITenderL.github.io\docs\database\mysql\images\index-introduce\InnoDB-主键索引-等值查找.png)
+![](./images/index-introduce/InnoDB-主键索引-等值查找.png)
 
 #### 辅助索引
 
@@ -295,7 +295,7 @@ select * from user_innodb where id = 28;
 
 以表user_innodb的age列为例，age索引的索引结果如下图。
 
-![](E:\workSpace\IdeaProjects\ITenderL.github.io\docs\database\mysql\images\index-introduce\InnoDB-辅助索引.png)
+![](./images/index-introduce/InnoDB-辅助索引.png)
 
 底层叶子节点的按照（age，id）的顺序排序，先按照age列从小到大排序，age列相同时按照id列从小到大排序。
 
@@ -307,7 +307,7 @@ select * from user_innodb where id = 28;
 select * from t_user_innodb where age=19;
 ```
 
-![](E:\workSpace\IdeaProjects\ITenderL.github.io\docs\database\mysql\images\index-introduce\InnoDB-辅助索引-等值查找.png)
+![](./images/index-introduce/InnoDB-辅助索引-等值查找.png)
 
 根据在辅助索引树中获取的主键id，到主键索引树检索数据的过程称为**回表**查询。
 
@@ -332,11 +332,11 @@ CREATE TABLE `abc_innodb`
 select * from abc_innodb order by a, b, c, id;
 ```
 
-![图片](E:\workSpace\IdeaProjects\ITenderL.github.io\docs\database\mysql\images\index-introduce\abc_innodb.png)
+![图片](./images/index-introduce/abc_innodb.png)
 
 组合索引的数据结构：
 
-![](E:\workSpace\IdeaProjects\ITenderL.github.io\docs\database\mysql\images\index-introduce\组合索引数据结构.png)
+![](./images/index-introduce/组合索引数据结构.png)
 
 **组合索引的查询过程：**
 
@@ -360,13 +360,13 @@ select * from abc_innodb order by a, b, c, id;
 
 **覆盖索引的情况：**
 
-![图片](E:\workSpace\IdeaProjects\ITenderL.github.io\docs\database\mysql\images\index-introduce\覆盖索引.png)
+![图片](./images/index-introduce/覆盖索引.png)
 
 使用到覆盖索引
 
 **未使用到覆盖索引：**
 
-![图片](E:\workSpace\IdeaProjects\ITenderL.github.io\docs\database\mysql\images\index-introduce\覆盖索引-未使用.png)
+![图片](./images/index-introduce/覆盖索引-未使用.png)
 
 ## 6. 索引下推
 
@@ -390,7 +390,7 @@ CREATE TABLE `user`(
 ) ENGINE = InnoDB;
 ```
 
-![image-20220405214540565](E:\workSpace\IdeaProjects\ITenderL.github.io\docs\database\mysql\images\index-introduce\t_user_pulloff.png)
+![image-20220405214540565](./images/index-introduce/t_user_pulloff.png)
 
 - 假设有一个需求，要求匹配姓名第一个为陈的所有用户，sql语句如下：
 
@@ -413,7 +413,7 @@ SELECT * from user where  username like '陈%' and age=20
 
 
 
-![image-20220405213707583](E:\workSpace\IdeaProjects\ITenderL.github.io\docs\database\mysql\images\index-introduce\索引下推-5.6之前.png)
+![image-20220405213707583](./images/index-introduce/索引下推-5.6之前.png)
 
 
 
@@ -423,7 +423,7 @@ SELECT * from user where  username like '陈%' and age=20
 
 - 5.6版本添加了索引下推这个优化，执行的过程如下图：
 
-![image-20220405213726401](E:\workSpace\IdeaProjects\ITenderL.github.io\docs\database\mysql\images\index-introduce\索引下推-5.6之后.png)
+![image-20220405213726401](./images/index-introduce/索引下推-5.6之后.png)
 
 
 
