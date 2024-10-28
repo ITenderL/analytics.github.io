@@ -37,6 +37,7 @@
   - [CAP理论和BASE理论](CAP.md)
   - [分布式ID](分布式ID.md)
   - [分布式事务](./distributed-system/distributed_transaction.md)
+  - [Seata](./distributed-system/seata.md)
 - 搜索引擎
   - [ElasticSearch](./distributed-middleware/elasticsearch/elasticsearch.md)
   - [ElasticSearch](./distributed-middleware/elasticsearch/elasticsearch.md)
