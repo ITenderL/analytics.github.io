@@ -19,11 +19,13 @@
   - [JVM运行时区](./Java/jvm/jvm-partition.md)
   - [对象的内存分布](./Java/jvm/Java%E5%AF%B9%E8%B1%A1%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83.md)
   - [类加载过程](./Java/jvm/jvm-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B.md)
+  - [垃圾回收详解](./Java/jvm/垃圾回收详解.md)
   - [JVM常见问题](./Java/jvm/jvm-%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98.md)
-  
+
 - 设计模式
-  
+
   - [设计模式](./Java/design-pattern/23种设计模式.md)
+  - [设计模式Demo地址](https://github.com/ITenderL/design_pattern)
   
 - 常用框架
   - [Spring常见问题](./system-design/framework/spring/spring-basis.md)
@@ -58,14 +60,7 @@
   - [RabbitMQ](./distributed-middleware/mq/RabbitMQ.md)
   - [Kafka]()
   - [RocketMQ]()
-  
-- 大数据
-  
-  - Hadoop
-  
-  - [Spark]()
-  - Hive
-  - [Flink]()
+
   
 - 计算机基础
   - [数据结构](deploy.md)
@@ -95,3 +90,10 @@
   - [排队](排队.md)
   - [超时和重试机制](超时重试.md)
   - [灾备设计和异地多活](灾备和异地多活.md)
+  
+- 大数据
+
+  - Hadoop
+  - Hive
+  - [Spark]()
+  - [Flink]()
