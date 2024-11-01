@@ -97,7 +97,7 @@ https://blog.csdn.net/Y_eatMeat/article/details/122851814?spm=1001.2014.3001.550
 
 Java堆是垃圾收集器管理的主要区域，因此也被称作**GC堆**。从垃圾回收的角度，由于现在的垃圾收集器基本都采用分代垃圾收集算法，所以Java堆还可以细分为：新生代和老年代。再细致一点新生代又可以分为：一个Eden区和两个Survivor区。Eden区、From Survivor区，To Survivor区。进一步划分的目的就是为了更好的进行内存回收和更快的分配内存。
 
-![在这里插入图片描述](E:\workSpace\IdeaProjects\ITenderL.github.io\docs\Java\jvm\images\堆内存细分.png)
+![在这里插入图片描述](./images/堆内存细分.png)
 
 
 上图所示的 Eden 区、From Survivor0("From") 区、To Survivor1("To") 区都属于新生代，Old Memory 区属于老年代。
