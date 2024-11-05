@@ -25,6 +25,7 @@
   - [垃圾回收详解](./Java/jvm/垃圾回收详解.md)
   - [JVM常见问题](./Java/jvm/jvm-常见问题.md)
   - [JVM调优实战](./Java/jvm/JVM调优实战.md)
+  
 - 设计模式
 
   - [设计模式](./Java/design-pattern/23种设计模式.md)
@@ -32,8 +33,8 @@
 - 常用框架
   - Spring
     - [Spring常见问题](./framework/spring/spring-basis.md)
-    - [SpringBean生命周期](./framework/spring/spring-transaction.md)
-    - [Spring循环依赖](./framework/spring/循环依赖.md)
+    - [SpringBean生命周期](./framework/spring/spring-bean生命周期.md)
+    - [Spring循环依赖](./framework/spring/spring-循环依赖.md)
     - [Spring事务详解](./framework/spring/spring-transaction.md)
     - [Spring源码详解](./framework/spring/spring-source-code.md)
   - SpringMVC
@@ -57,7 +58,7 @@
   - [CAP理论和BASE理论](./distributed-system/分布式理论.md)
   - [分布式ID](./distributed-system/分布式ID.md)
   - [分布式事务](./distributed-system/distributed_transaction.md)
-  - [Seata](./distributed-system/seata.md)
+  - [seata](./distributed-system/seata.md)
   
 - 搜索引擎
   - [ElasticSearch](./distributed-middleware/elasticsearch/elasticsearch.md)
@@ -76,7 +77,6 @@
 - 高性能
 
   - [消息队列](消息队列.md)
-
   - [负载均衡](负载均衡.md)
   
 - 高可用

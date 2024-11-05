@@ -20,7 +20,7 @@ Mark Word在32位JVM中的长度是32bit，在64位JVM中长度是64bit。
 
 例如在32位的`HotSpot`虚拟机中对象未被锁定的状态下，`Mark Word`的`32`个bits空间中的`25bits`用于存储对象哈希码（`HashCode`），`4bits`用于存储对象分代年龄，`2bits`用于存储锁标志位，`1bit`固定为0，在其他状态（轻量级锁定、重量级锁定、GC标记、可偏向）下对象的存储内容如下表所示。
 
-![](images/markword内容.png)
+![](./images/markword内容.png)
 
 ### 1.2 类型指针
 
@@ -75,7 +75,7 @@ public class Test01 {
 
 输出：
 
-![image-20220216233451328](images/jol查看对象.png)
+![image-20220216233451328](./images/jol查看对象.png)
 
 先解释下各个字段的含义
 
