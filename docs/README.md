@@ -1,5 +1,4 @@
-- Java
-  
+- Java基础篇
   - [Java基础](./Java/basis/Java基础.md)
   - [静态代理+JDK&CGLIB动态代理](./Java/basis/静态代理+JDK&CGLIB动态代理.md)
 
