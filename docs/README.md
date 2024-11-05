@@ -37,11 +37,12 @@
     - [Spring事务详解](./framework/spring/spring-transaction.md)
     - [Spring源码详解](./framework/spring/spring-source-code.md)
   - SpringMVC
-    - [SpringMvc常见问题](./framework/spring/spring-mvc-basis.md)
+    - [SpringMvc常见问题](framework/spring-mvc/spring-mvc-basis.md)
   - SpringBoot
-    - [SpringBoot常见问题](./framework/spring/spring-boot-basis.md)
+    - [SpringBoot常见问题](framework/springboot/spring-boot-basis.md)
+    - [SpringBoot自动装配原理](framework/springboot/SpringBoot自动装配原理.md)
   - SpringCloud
-    - [SpringCloud常见问题](./framework/spring/spring-cloud-basis.md)
+    - [SpringCloud常见问题](framework/springcloud/spring-cloud-basis.md)
 
 - MySQL篇
   - [MySQL基础知识](./database/mysql/mysql-basis.md)
@@ -88,7 +89,9 @@
   - [灾备设计和异地多活](灾备和异地多活.md)
 
 - 大数据
-  - Hadoop
-  - Hive
-  - [Spark]()
-  - [Flink]()
+  - [Hadoop常见问题](./bigdata/hadoop/hadoop-basis.md)
+  - [Hive](./bigdata/hive/hive-basis.md)
+  - [Spark](./bigdata/spark/spark-basis.md)
+  - [Flink](./bigdata/flink/flink-basis.md)
+  
+- 面试题总结

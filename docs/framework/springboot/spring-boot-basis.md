@@ -6,7 +6,7 @@ SpringBoot运行原理，我们先看一下 SpringBoot 的核心注解 `SpringBo
 
 ### @SpringBootApplication
 
-![](images/spring-boot/springboot-application.png)
+![](../spring/images/spring-boot/springboot-application.png)
 
 我们发现@SpringBootApplication主要关注的几个注解如下：
 **@SpringBootConfiguration**：标记当前类为配置类
@@ -16,7 +16,7 @@ SpringBoot运行原理，我们先看一下 SpringBoot 的核心注解 `SpringBo
 
 ### @EnableAutoConfiguration
 
-![EnableAutoConfiguration](images/spring-boot/EnableAutoConfiguration.png)
+![EnableAutoConfiguration](../spring/images/spring-boot/EnableAutoConfiguration.png)
 
 最关键的要属**@Import(EnableAutoConfigurationImportSelector.class)**，借助**EnableAutoConfigurationImportSelector**，@EnableAutoConfiguration可以帮助SpringBoot应用将所有符合条件的@Configuration配置都加载到当前SpringBoot创建并使用的IoC容器:通过@Import(AutoConfigurationImportSelector.class)导入的配置功能，AutoConfigurationImportSelector中的方法getCandidateConfigurations，得到待配置的class的类名集合,这个集合就是所有需要进行自动配置的类，而是是否配置的关键在于META-INF/spring.factories文件中是否存在该配置信息。
 
@@ -53,7 +53,7 @@ protected List<String> getCandidateConfigurations(AnnotationMetadata metadata,
 
 打开，如下图可以看到所有需要配置的类全路径都在文件中，每行一个配置，多个类名逗号分隔,而\表示忽略换行。
 
-![](images/spring-boot/spring-factories.png)
+![](../spring/images/spring-boot/spring-factories.png)
 
 到这里可能面试官会问你:“`spring.factories`中这么多配置，每次启动都要全部加载么？”。
 
