@@ -40,19 +40,28 @@
     - [SpringMvc常见问题](framework/spring-mvc/spring-mvc-basis.md)
   - SpringBoot
     - [SpringBoot常见问题](framework/springboot/spring-boot-basis.md)
-    - [SpringBoot自动装配原理](framework/springboot/SpringBoot自动装配原理.md)
+    - [SpringBoot自动装配原理](framework/springboot/spring-boot自动装配原理)
+    - [SpringBoot常用注解](framework/springboot/spring-boot常用注解.md)
+    - [SpringBoot如何自定义Starter](framework/springboot/spring-boot自定义Starter)
   - SpringCloud
-    - [SpringCloud常见问题](framework/springcloud/spring-cloud-basis.md)
-
-- MySQL篇
-  - [MySQL基础知识](./database/mysql/mysql-basis.md)
-  - [MySQL事务详解](./database/mysql/mysql-transaction.md)
-  - [MySQL索引](./database/mysql/mysql-index-introduce.md)
-  - [MySQL索引优化](./database/mysql/mysql-optimize-index.md)
-  - [MySQL锁](./database/mysql/mysql-lock.md)
-  - [MySQL主从复制](./database/mysql/mysql-master-slave.md)
-  - [MySQL表结构优化](./database/mysql/mysql-optimize-table-structure.md)
-  - [MySQL中SQL执行顺序](./database/mysql/MySQL中SQL执行顺序.md)
+    - [SpringCloud基础知识](framework/springcloud/spring-cloud-basis.md)
+- 数据库篇
+  - MySQL篇
+    - [MySQL基础知识](./database/mysql/mysql-basis.md)
+    - [MySQL事务详解](./database/mysql/mysql-transaction.md)
+    - [MySQL索引](./database/mysql/mysql-index-introduce.md)
+    - [MySQL索引优化](./database/mysql/mysql-optimize-index.md)
+    - [MySQL锁](./database/mysql/mysql-lock.md)
+    - [MySQL主从复制](./database/mysql/mysql-master-slave.md)
+    - [MySQL表结构优化](./database/mysql/mysql-optimize-table-structure.md)
+    - [MySQL中SQL执行顺序](./database/mysql/MySQL中SQL执行顺序.md)
+  - Redis篇
+    - Redis基础知识
+    - Redis常见面试题
+    - Redis持久化
+    - Redis集群
+  - MongoDB篇
+    - mongoDB基础知识
 
 - 分布式
   - [CAP理论和BASE理论](./distributed-system/分布式理论.md)
