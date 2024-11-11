@@ -39,7 +39,7 @@ Spring Cloud并没有重复制造轮子，它只是将各家公司开发的比�
 `SpringCloud`包含的组件很多，有很多功能是重复的。其中最常用组件包括：
 
 - 注册中心组件：**Eureka**、**Nacos**等
-- 负载均衡组件：**Ribbon**
+- 负载均衡组件：**Ribbon**，Loadbalancer
 - 远程调用组件：**OpenFeign**、**RestTemplate**
 - 网关组件：**Zuul**、**Gateway**
 - 服务保护组件：**Hystrix**、**Sentinel**
@@ -59,8 +59,8 @@ Spring Cloud并没有重复制造轮子，它只是将各家公司开发的比�
 
 ### 2.1 Nacos1.x作为注册中心的原理？
 
-1. 使用http发送注册
-2. 查询服务提供方列表
+1. 服务提供者通过open Api使用http发送注册
+2. 服务调用者查询服务提供方列表
 3. 定时拉取注册信息（每隔10s）
 4. 检测到服务提供者异常，基于UDP协议推送更新
 5. 定时心跳（5s），检测服务状态
