@@ -70,9 +70,9 @@
   - [seata](./distributed-system/seata.md)
 
 - 搜索引擎
-  - [ElasticSearch](./distributed-middleware/elasticsearch/elasticsearch.md)
-  - [ElasticSearch](./distributed-middleware/elasticsearch/elasticsearch.md)
-  - [ElasticSearch](./distributed-middleware/elasticsearch/elasticsearch.md)
+  - [ElasticSearch基础概念](./database/elasticsearch/Elasticsearch基础概念.md)
+  - [ElasticSearch环境搭建](./database/elasticsearch/Elasticsearch环境搭建.md)
+  - [ElasticSearch核心知识](./database/elasticsearch/Elasticsearch知识必备.md)
 
 - 消息队列
 
