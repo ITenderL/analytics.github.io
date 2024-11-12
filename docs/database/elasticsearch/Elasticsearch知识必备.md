@@ -33,7 +33,7 @@
 
 ## Elasticsearch 索引文档的流程
 
-![](E:\workSpace\IdeaProjects\ITenderL.github.io\docs\distributed-middleware\elasticsearch\images\es索引文档过程.png)
+![](./images/es索引文档过程.png)
 
 1. 协调节点默认使用文档ID参与计算（也支持通过routing），以便为路由提供合适的分片shard = hash(document_id) % (num_of_primary_shards)。
 2. 当分片所在的节点接收到来自协调节点的请求后，会将请求写入到Memory Buffer，然后定时（默认是每隔一秒）写入到Filesystem Cache，这个从Memory Buffer到Filesystem Cache的过程叫做refresh。
@@ -49,7 +49,7 @@
 
 ## Elasticsearch 搜索的流程
 
-![](E:\workSpace\IdeaProjects\ITenderL.github.io\docs\distributed-middleware\elasticsearch\images\es搜索流程.png)
+![](./images/es搜索流程.png)
 
 1. 所有被执行成一个两阶段过程，我们称之为Query Then Fetch；
 2. 在初始查询阶段时，查询会广播到没一个分片拷贝（主分片或者副本分片）。每个本片在本地执行搜索并构建一个匹配文档的大小为from+size的优先队列。PS:  在搜索的时候会查询Filesystem Cache的，但是有部分数据还在Memory Buffer，所以搜索时近实时的。

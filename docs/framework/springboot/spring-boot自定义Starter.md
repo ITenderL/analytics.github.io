@@ -8,7 +8,7 @@
 
 ## 1. 创建一个`spring-boot-threadpool-starter`
 
-![image-20241110220018868](spring-boot自定义Starter.assets/image-20241110220018868.png)
+![image-20241111132559220](spring-boot自定义Starter.assets/image-20241111132559220.png)
 
 ## 2. 导入`SpringBoot`依赖
 
@@ -62,7 +62,7 @@
 
 ```
 
-## 3. 创建`ThreadPoolAutoConfiguration`
+## 3. 创建`CustomerThreadPoolConfiguration`
 
 ```java
 @Configuration
