@@ -286,3 +286,31 @@ Pull模式下，consumer就可以根据自己的消费能力去决定这些策�
 Pull有个缺点是，如果broker没有可供消费的消息，将导致consumer不断在循环中轮询，直到新消息到达。
 
 为了避免这点，Kafka有个参数可以让consumer阻塞知道新消息到达(当然也可以阻塞知道消息的数量达到某个特定的量这样就可以批量发
+
+# kafka的rebalance机制是什么
+
+consumer group中的消费者与topic下的partion重新匹配的过程
+
+**何时会产生rebalance：**
+
+- consumer group中的成员个数发生变化
+- consumer消费超时
+- group订阅的topic个数发生变化
+- group订阅的topic的分区数发生变化
+
+coordinator：通常是partition的leader节点所在的broker，负责监控group中consumer的存活，consumer维持到coordinator的心跳，判断consumer的消费超时
+
+- coordinator通过心跳返回通知consumer进行rebalance
+- consumer请求coordinator加入组，coordinator选举产生leader consumer
+- leader consumer从coordinator获取所有的consumer，发送syncGroup(分配信息)给到coordinator
+- coordinator通过心跳机制将syncGroup下发给consumer
+- 完成rebalance
+
+leader consumer监控topic的变化，通知coordinator触发rebalance
+
+如果C1消费消息超时，触发rebalance，重新分配后、该消息会被其他消费者消费，此时C1消费完成提交offset、导致错误
+
+**解决**：
+
+coordinator每次rebalance，会标记一个Generation给到consumer，每次rebalance该Generation会+1，consumer提交offset时，coordinator会比对Generation，不一致则拒绝提交
+
