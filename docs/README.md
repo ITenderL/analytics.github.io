@@ -59,6 +59,7 @@
     - Redis基础知识
     - Redis常见面试题
     - Redis持久化
+    - Redis线上问题处理
     - [Redis集群](./database/redis/Redis集群.md)
   - MongoDB篇
     - mongoDB基础知识
@@ -68,17 +69,17 @@
   - [分布式ID](./distributed-system/分布式ID.md)
   - [分布式事务](./distributed-system/distributed_transaction.md)
   - [seata](./distributed-system/seata.md)
+
+- 消息队列
+
+  - [RabbitMQ](./distributed-middleware/mq/RabbitMQ常见面试题总结)
+  - [Kafka](./distributed-middleware/mq/Kafka常见面试题总结)
+  - [RocketMQ](./distributed-middleware/mq/RocketMQ.md)
   
 - 搜索引擎
   - [ElasticSearch基础概念](./database/elasticsearch/Elasticsearch基础概念.md)
   - [ElasticSearch环境搭建](./database/elasticsearch/Elasticsearch环境搭建.md)
   - [ElasticSearch核心知识](./database/elasticsearch/Elasticsearch知识必备.md)
-
-- 消息队列
-
-  - [RabbitMQ](./distributed-middleware/mq/RabbitMQ常见面试题总结)
-  - [Kafka](./distributed-middleware/mq/Kafka.md)
-  - [RocketMQ](./distributed-middleware/mq/RocketMQ.md)
 
 - Linux系统
   - [Linux常用命令大全](./linux/linux-command.md)

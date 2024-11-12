@@ -59,6 +59,7 @@
     - Redis基础知识
     - Redis常见面试题
     - Redis持久化
+    - Redis线上问题处理
     - [Redis集群](./database/redis/Redis集群.md)
   - MongoDB篇
     - mongoDB基础知识
@@ -77,7 +78,7 @@
 - 消息队列
 
   - [RabbitMQ](./distributed-middleware/mq/RabbitMQ常见面试题总结)
-  - [Kafka](./distributed-middleware/mq/Kafka.md)
+  - [Kafka](./distributed-middleware/mq/Kafka常见面试题总结)
   - [RocketMQ](./distributed-middleware/mq/RocketMQ.md)
 
 - Linux系统
