@@ -39,7 +39,7 @@ Spring Cloud并没有重复制造轮子，它只是将各家公司开发的比�
 `SpringCloud`包含的组件很多，有很多功能是重复的。其中最常用组件包括：
 
 - 注册中心组件：**Eureka**、**Nacos**等
-- 负载均衡组件：**Ribbon**，Loadbalancer
+- 负载均衡组件：**Ribbon**，**Loadbalancer**
 - 远程调用组件：**OpenFeign**、**RestTemplate**
 - 网关组件：**Zuul**、**Gateway**
 - 服务保护组件：**Hystrix**、**Sentinel**
@@ -137,7 +137,7 @@ Nacos与Eureka有相同点，也有不同之处，可以从以下几点来描述
   - 主动拉取模式：消费者定期主动从Nacos拉取服务列表缓存到本地，服务调用的时候优先读取本地缓存中的服务列表
   - 订阅推送：消费者订阅Nacos中的服务列表，并基于UDP协议来接收服务变更通知，Nacos服务中的列表更新时，会推送UDP广播给所有的订阅者。
 
-**功能作用**：Nacso既可以做注册中心，也可以做配置中心；Eureka只能做配置中心
+**功能作用**：Nacso既可以做注册中心，也可以做配置中心；Eureka只能做注册中心。
 
 ## 3. Eureka篇
 
@@ -357,43 +357,23 @@ ribbon:
 
 ### 5.5 Feign的性能优化？
 
-Feign底层默认是 JDK自带的HttpURLConnection，它是单线程发送HTTP请求的，不能配置线程
-
-池，我们使用Okhttp或者HttpClient来发送http请求，并且它们两个都支持线程池。
-
-常见HTTP客户端
+Feign底层默认是 JDK自带的HttpURLConnection，它是单线程发送HTTP请求的，不能配置线程池，我们使用Okhttp或者HttpClient来发送http请求，并且它们两个都支持线程池。常见HTTP客户端
 
 **HttpClient**
 
-HttpClient 是 Apache Jakarta Common 下的子项目，用来提供高效的、最新的、功能丰富的
-
-支持 Http 协 议的客户端编程工具包，并且它支持 HTTP 协议最新版本和建议。HttpClient 相
-
-比传统 JDK 自带的 URLConnection，提升了易用性和灵活性，使客户端发送 HTTP 请求变得
-
-容易，提高了开发的效率。
+HttpClient 是 Apache Jakarta Common 下的子项目，用来提供高效的、最新的、功能丰富的支持 Http 协 议的客户端编程工具包，并且它支持 HTTP 协议最新版本和建议。HttpClient 相比传统 JDK 自带的 URLConnection，提升了易用性和灵活性，使客户端发送 HTTP 请求变得容易，提高了开发的效率。
 
 **Okhttp**
 
-一个处理网络请求的开源项目，是安卓端最火的轻量级框架，由 Square 公司贡献，用于替代 
-
-HttpUrlConnection 和 Apache HttpClient。OkHttp 拥有简洁的 API、高效的性能，并支持
-
-多种协议 （HTTP/2 和 SPDY）。
+一个处理网络请求的开源项目，是安卓端最火的轻量级框架，由 Square 公司贡献，用于替代 HttpUrlConnection 和 Apache HttpClient。OkHttp 拥有简洁的 API、高效的性能，并支持多种协议 （HTTP/2 和 SPDY）。
 
 **HttpURLConnection**
 
-HttpURLConnection 是 Java 的标准类，它继承自 URLConnection，可用于向指定网站发送 
-
-GET 请求、 POST 请求。HttpURLConnection 使用比较复杂，不像 HttpClient 那样容易使
-
-用。
+HttpURLConnection 是 Java 的标准类，它继承自 URLConnection，可用于向指定网站发送 GET 请求、 POST 请求。HttpURLConnection 使用比较复杂，不像 HttpClient 那样容易使用。
 
 **RestTemplate**
 
-RestTemplate 是 Spring 提供的用于访问 Rest 服务的客户端，RestTemplate 提供了多种便捷
-
-访问远程 HTTP 服务的方法，能够大大提高客户端的编写效率。
+RestTemplate 是 Spring 提供的用于访问 Rest 服务的客户端，RestTemplate 提供了多种便捷访问远程 HTTP 服务的方法，能够大大提高客户端的编写效率。
 
 ### 5.7 Feign和OpenFeign有何区别？
 
@@ -669,3 +649,117 @@ API网关可以对流量进行控制，包括请求的限流和熔断，以防�
 
 **链路追踪：**
 网关是实施链路追踪的理想位置，可以为进出的请求加上追踪标识。
+
+###  Gateway的过滤器分类有哪些？
+
+在 Spring Cloud Gateway 中，过滤器是在请求到达目标服务之前或之后，执行某些特定操作的一种机制。例如，它可以实现对传入的请求进行验证、修改、日志记录、身份验证、流量控制等各种功能。
+
+在 Spring Cloud Gateway 中，过滤器总共分为以下两大类：
+
+1. **局部过滤器**：只作用于某一个路由（route）。
+
+2. 全局过滤器
+
+   ：对所有的路由都有效。 
+
+   1. **内置全局过滤器**：Spring Cloud Gateway 自带的 30+ 过滤器，详情请访问：https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#gatewayfilter-factories
+   2. **自定义全局过滤器**：开发者自行实现的过滤器。
+
+#### 1. 局部过滤器
+
+Spring Cloud Gateway 中的局部过滤器配置如下：
+
+``` yml
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: userservice
+          uri: http://192.168.1.7:56628
+          predicates:
+            - Path=/user/**
+          filters:
+            - AddResponseHeader=gateway-flag, javacn.site
+
+```
+
+以上过滤器的含义是在输出对象 Response 中添加 Header 信息，key 为“gateway-flag”，value 为“javacn.site”。
+
+> PS：AddResponseHeader 也是 Gateway 内置过滤器之一。
+
+#### 2. 全局过滤器
+
+**全局过滤器会对当前网关中的所有路由都生效。**
+
+Spring Cloud Gateway 中的内置全局过滤器配置如下：
+
+``` yml
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: userservice
+          uri: http://192.168.1.7:51627
+          predicates:
+          - Weight=group1,50
+        - id: userservice2
+          uri: http://192.168.1.7:56628
+          predicates:
+            - Weight=group1,50
+          filters:
+            - AddResponseHeader=gateway-flag, javacn.site
+      default-filters:
+        - AddResponseHeader=gateway-default-filters, www.javacn.site
+
+```
+
+#### 3. 自定义全局过滤器
+
+Spring Cloud Gateway 中自定义全局过滤器的实现是，定义一个类，使用 @Component 注解将其存入 IoC 容器，然后再实现 GlobalFilter 接口，重写 filter 方法，在 filter 中写自己的过滤方法即可，具体实现如下:
+
+``` java
+import org.springframework.cloud.gateway.filter.GatewayFilterChain;
+import org.springframework.cloud.gateway.filter.GlobalFilter;
+import org.springframework.core.Ordered;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.server.reactive.ServerHttpRequest;
+import org.springframework.http.server.reactive.ServerHttpResponse;
+import org.springframework.stereotype.Component;
+import org.springframework.web.server.ServerWebExchange;
+import reactor.core.publisher.Mono;
+
+@Component
+public class AuthFilter implements GlobalFilter, Ordered {
+    @Override
+    public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
+        // 得到 request、response 对象
+        ServerHttpRequest request = exchange.getRequest();
+        ServerHttpResponse response = exchange.getResponse();
+        // 业务逻辑代码
+        if(request.getQueryParams().getFirst("auth")==null){
+            // 权限有问题返回，并结束执行
+            response.setStatusCode(HttpStatus.FORBIDDEN);
+            return response.setComplete();
+        }
+        // 此步骤正常，执行下一步
+        return chain.filter(exchange);
+    }
+
+    @Override
+    public int getOrder() {
+        // 此值越小越早执行
+        return 1;
+    }
+}
+
+```
+
+以上代码是验证请求参数中是否有“auth”参数，如果没有的话就认为未登录，调用“response.setComplete()”终止继续执行，反之则认为已经登录，可以执行后续流程了，使用“chain.filter(exchange)”来实现。
+
+### Gateway过滤器的执行顺序？
+
+default-filters：按照声明顺序从1递增。
+
+当过滤器的order值相同时，会按照下面的顺序：
+
+default-filter -> 路由过滤器 -> GlobalFilter

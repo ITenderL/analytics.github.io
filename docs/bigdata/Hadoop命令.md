@@ -1,6 +1,7 @@
 # HDFS
 
 ``` shell
+
 # 一键启动hdfs集群
 start-dfs.sh
 # 一键关闭hdfs集群
@@ -23,6 +24,8 @@ hdfs --daemon start nfs3
 
 # 启动yarn
 $HADOOP_HOME/sbin/start-yarn.sh
+# 关闭yarn
+sbin/stop-yarn.sh
 # 历史服务器
 $HADOOP_HOME/bin/mapred --daemon start historyserver
 
@@ -47,6 +50,11 @@ $HADOOP_HOME/bin/mapred --daemon start|stop historyserver
 scp -r hadoop-3.3.4 node2:`pwd`/
 scp -r hadoop-3.3.4 node3:`pwd`/
 
+# 关闭历史服务器
+mapred --daemon stop historyserver
+# 启动历史服务器
+mapred --daemon start historyserver
+
 ```
 
 # Hive
@@ -65,7 +73,6 @@ nohup bin/hive --service metastore >> logs/metastore.log 2>&1 &
 bin/hive
 #Hive ThriftServer方式（不可直接写SQL，需要外部客户端链接使用）： 
 bin/hive --service hiveserver2 >> logs/hiveserver2.log 2>&1 &
-
 
 nohup hive --service hiveserver2 &
 nohup hive --service metastore &
